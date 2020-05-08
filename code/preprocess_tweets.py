@@ -1,4 +1,5 @@
 import re
+from nltk.corpus import stopwords
 
 CONTRACTIONS = { 
     "ain't": "am not",
