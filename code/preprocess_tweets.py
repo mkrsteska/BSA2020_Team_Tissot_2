@@ -205,3 +205,14 @@ def preprocess_tweet(tweet):
     
     # Return result
     return tweet
+
+
+
+'''Function to remove English stopwords from a Pandas Series.'''
+def remove_stopwords(input_text):
+    stopwords_list = stopwords.words('english')
+    # Some words which might indicate a certain sentiment are kept via a whitelist
+    whitelist = ["n't", "not", "no"]
+    words = input_text.split() 
+    clean_words = [word for word in words if (word not in stopwords_list or word in whitelist) and len(word) > 1] 
+    return " ".join(clean_words) 
