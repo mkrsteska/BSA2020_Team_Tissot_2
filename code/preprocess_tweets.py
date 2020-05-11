@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from keras.preprocessing.sequence import pad_sequences
 from nltk.corpus import stopwords
+import string
 
 GLOVE_DIMENSION = 25
 MAX_WORDS = 30 
@@ -568,3 +569,69 @@ def remove_stopwords(input_text):
     words = input_text.split() 
     clean_words = [word for word in words if (word not in stopwords_list or word in whitelist) and len(word) > 1] 
     return " ".join(clean_words) 
+
+
+
+'''Function to preprocess the tweets'''
+def preprocess_tweet_use(tweet):
+    # MULTILINE - '^' matches the beggining of each line
+    # DOTALL - '.' matches every character including newline
+    FLAGS = re.MULTILINE | re.DOTALL
+          
+    # Replace links
+    tweet = re.sub(r"https?:\/\/\S+\b|www\.(\w+\.)+\S*", " ", tweet, flags = FLAGS)
+    
+    # Remove hashtags
+    tweet = re.sub(r"\#","", tweet, flags = FLAGS)
+    
+    # Remove mentions, starting with @
+    tweet = re.sub(r'@\w+', '', tweet, flags = FLAGS)
+            
+    # Eyes of a smiley can be represented with: 8:=;
+    # Nose of a smiley can be represented with: '`\-
+    
+    # Replace smiling face with <smile>. Mouth can be repredented with: )dD.
+    tweet = re.sub(r"[8:=;]['`\-]?[)dD]+|[(dD]+['`\-]?[8:=;]", " smile ", tweet, flags = FLAGS)
+    
+    # Replace lol face with <lolface>. Mouth can be represented with: pP
+    tweet = re.sub(r"[8:=;]['`\-]?[pP]+", " lol ", tweet, flags = FLAGS)
+    
+    # Replace sad face with <sadface>. Mouth can be represented with: (
+    tweet = re.sub(r"[8:=;]['`\-]?[(]+|[)]+['`\-]?[8:=;]", " sad ", tweet, flags = FLAGS)
+    
+    # Replace neutral face with <neutralface>. Mouth can be represented with: \/|l
+    tweet = re.sub(r"[8:=;]['`\-]?[\/|l]+", " neutral", tweet, flags = FLAGS)
+    
+    # Split concatenated words wih /. Ex. Good/Bad -> Good Bad
+    tweet = re.sub(r"/"," / ", tweet, flags = FLAGS)
+    
+    # Replace <3 with <heart>
+    tweet = re.sub(r"<3"," heart ", tweet, flags = FLAGS)
+    
+    # Replace elongated endings with <elong>. Ex. happyyy -> happy <elong>
+    tweet = re.sub(r"\b(\S*?)(.)\2{2,}\b", r"\1\2 <elong> ", tweet, flags = FLAGS)
+    
+    # Remove <elong>
+    tweet = re.sub(r"<elong>", r" ", tweet, flags = FLAGS)
+    
+    # Expand English contractions
+    for word in tweet.split():
+        if word.lower() in CONTRACTIONS:
+            tweet = tweet.replace(word, CONTRACTIONS[word.lower()])
+            
+    # Expand abbreviations
+    for word in tweet.split():
+        if word.lower() in ABBREVIATIONS:
+            tweet = tweet.replace(word, ABBREVIATIONS[word.lower()])
+
+    # Remove punctuation
+    tweet = tweet.strip(string.punctuation)
+    
+    # Replace multiple empty spaces with one
+    tweet = re.sub('\s+', " ", tweet, flags = FLAGS)
+       
+    # Convert all tokens to lowercase
+    tweet = tweet.lower()
+    
+    # Return result
+    return tweet
