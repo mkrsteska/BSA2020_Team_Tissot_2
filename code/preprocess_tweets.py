@@ -1,8 +1,10 @@
 import re
+<<<<<<< HEAD
 import sys
 import pandas as pd
 import numpy as np
 from keras.preprocessing.sequence import pad_sequences
+from nltk.corpus import stopwords
 
 GLOVE_DIMENSION = 25
 MAX_WORDS = 30 
@@ -453,70 +455,6 @@ def preprocess_tweet(tweet):
     # Return result
     return tweet
 
-'''Function to preprocess the tweets'''
-def preprocess_tweet_use(tweet):
-    # MULTILINE - '^' matches the beggining of each line
-    # DOTALL - '.' matches every character including newline
-    FLAGS = re.MULTILINE | re.DOTALL
-          
-    # Replace links with token <url>
-    tweet = re.sub(r"https?:\/\/\S+\b|www\.(\w+\.)+\S*", " url ", tweet, flags = FLAGS)
-    
-    # Remove hashtags
-    tweet = re.sub(r"\#","", tweet, flags = FLAGS)
-    
-    # Remove mentions, starting with @
-    tweet = re.sub(r'@\w+', '', tweet, flags = FLAGS)
-            
-    # Eyes of a smiley can be represented with: 8:=;
-    # Nose of a smiley can be represented with: '`\-
-    
-    # Replace smiling face with <smile>. Mouth can be repredented with: )dD.
-    tweet = re.sub(r"[8:=;]['`\-]?[)dD]+|[(dD]+['`\-]?[8:=;]", " smile ", tweet, flags = FLAGS)
-    
-    # Replace lol face with <lolface>. Mouth can be represented with: pP
-    tweet = re.sub(r"[8:=;]['`\-]?[pP]+", " lol ", tweet, flags = FLAGS)
-    
-    # Replace sad face with <sadface>. Mouth can be represented with: (
-    tweet = re.sub(r"[8:=;]['`\-]?[(]+|[)]+['`\-]?[8:=;]", " sad ", tweet, flags = FLAGS)
-    
-    # Replace neutral face with <neutralface>. Mouth can be represented with: \/|l
-    tweet = re.sub(r"[8:=;]['`\-]?[\/|l]+", " neutral ", tweet, flags = FLAGS)
-    
-    # Split concatenated words wih /. Ex. Good/Bad -> Good Bad
-    tweet = re.sub(r"/"," / ", tweet, flags = FLAGS)
-    
-    # Replace <3 with <heart>
-    tweet = re.sub(r"<3"," heart ", tweet, flags = FLAGS)
-    
-    # Replace numbers with <number>.
-    tweet = re.sub(r"[-+]?[.\d]*[\d]+[:,.\d]*", " number ", tweet, flags = FLAGS)
-       
-    # Expand English contractions
-    for word in tweet.split():
-        if word.lower() in CONTRACTIONS:
-            tweet = tweet.replace(word, CONTRACTIONS[word.lower()])
-            
-    # Expand abbreviations
-    for word in tweet.split():
-        if word.lower() in ABBREVIATIONS:
-            tweet = tweet.replace(word, ABBREVIATIONS[word.lower()])
-            
-    # Remove apostrophes
-    tweet = re.sub(r"'","", tweet, flags = FLAGS)
-
-    # Add space between punctuation and word
-    tweet = re.sub(r'(?<=[^ ])(?=[.,!?()])|(?<=[.,!?()])(?=[^ ])', r' ', tweet, flags = FLAGS)
-    
-    # Replace multiple empty spaces with one
-    tweet = re.sub('\s+', ' ', tweet, flags = FLAGS)
-       
-    # Convert all tokens to lowercase
-    tweet = tweet.lower()
-    
-    # Return result
-    return tweet
-
 def generate_embedding_matrix():
     df_train = pd.read_csv("../data/train.csv")
     df_test = pd.read_csv("../data/test.csv")
@@ -621,4 +559,13 @@ def generate_embedding_matrix():
     embedding_matrix[vocabulary_size] = [0]*GLOVE_DIMENSION
         
     return (X_train, y_train, X_test, embedding_matrix)
-    
+
+
+'''Function to remove English stopwords from a Pandas Series.'''
+def remove_stopwords(input_text):
+    stopwords_list = stopwords.words('english')
+    # Some words which might indicate a certain sentiment are kept via a whitelist
+    whitelist = ["n't", "not", "no"]
+    words = input_text.split() 
+    clean_words = [word for word in words if (word not in stopwords_list or word in whitelist) and len(word) > 1] 
+    return " ".join(clean_words) 
