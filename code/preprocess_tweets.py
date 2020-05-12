@@ -400,6 +400,9 @@ def preprocess_tweet(tweet):
     # Remove mentions, starting with @
     tweet = re.sub(r'@\w+', '', tweet, flags = FLAGS)
             
+    # Remove retweet
+    tweet = re.sub(r"RT ", " ", tweet, flags = FLAGS)
+    
     # Eyes of a smiley can be represented with: 8:=;
     # Nose of a smiley can be represented with: '`\-
     
@@ -586,6 +589,9 @@ def preprocess_tweet_use(tweet):
     
     # Remove mentions, starting with @
     tweet = re.sub(r'@\w+', '', tweet, flags = FLAGS)
+    
+    # Remove retweet
+    tweet = re.sub(r"RT ", " ", tweet, flags = FLAGS)
             
     # Eyes of a smiley can be represented with: 8:=;
     # Nose of a smiley can be represented with: '`\-
