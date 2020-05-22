@@ -575,7 +575,7 @@ def remove_stopwords(input_text):
 
 
 
-'''Function to preprocess the tweets'''
+'''Function to preprocess the tweets for Universal Sentence Encoder'''
 def preprocess_tweet_use(tweet):
     # MULTILINE - '^' matches the beggining of each line
     # DOTALL - '.' matches every character including newline
