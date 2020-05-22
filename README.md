@@ -2,7 +2,7 @@
 
 Big-Scale Analytics 2020
 
-Professor: Michalis Vlachos 
+Professor: Michalis Vlachos  <br /> 
 Teaching Assistant: Ahmad Ajalloeian
 
 ## Overview ##
