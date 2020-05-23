@@ -10,7 +10,25 @@ Teaching Assistant: Ahmad Ajalloeian
 ## Structure of the project ##
 **In order to run the notebooks, please download the GloVe model from this link: https://drive.google.com/file/d/1jnyyMXLPUAY8Fh4cSXSeDzRnJHE-gKUz/view?usp=sharing and place it in the data folder.**
 
-**In order to run the notebooks in Google Colab, please upload the file 'preprocess_tweets.py', that is placed in the code folder**
+**In order to run the notebooks in Google Colab, please upload the file 'preprocess_tweets.py' in Google Colab. The file is placed in the code folder**
+
+#### code #### 
+
+#### data ####
+train.csv - the training set <br />
+test.csv - the test set <br />
+submission.csv - example of a submission file <br />
+1. Submission_MultinomialNB.csv <br />
+2. Submission_LSTM.csv <br />
+3. Submission_Bidirectional_LSTM.csv <br />
+4. Submission_CNN_LSTM.csv <br />
+5. Submission_Tensorflow_Keras.csv <br />
+6. Submission_Tensorflow_Keras.csv <br />
+7. Submission_Tensorflow_Keras.csv <br />
+8. Submission_SVC.csv <br />
+9. Submission_Keras_Embeddings.csv <br />
+10. Submission_Keras_Embeddings.csv <br />
+11. Submission_BERT.csv <br />
 
 ## Models ##
 
