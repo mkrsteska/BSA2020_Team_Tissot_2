@@ -7,6 +7,8 @@ Teaching Assistant: Ahmad Ajalloeian
 
 ## Overview ##
 
+## Structure of the project ##
+**In order to run the notebooks, please download the GloVe model from this link: https://drive.google.com/file/d/1jnyyMXLPUAY8Fh4cSXSeDzRnJHE-gKUz/view?usp=sharing and place it in the data folder.**
 
 ## Models ##
 
