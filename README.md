@@ -19,6 +19,7 @@ BERT_2.ipynb <br />
 Copie_de_BERT.ipynb <br />
 GloVe Embeddings and LSTM.ipynb <br />
 Project Notebook.ipynb <br />
+Submission.ipynb (Notebook used to create a submission file for the models in 'Project Notebook.ipynb') <br /> 
 Universal Sentence Encoder and Keras Sequential Model.ipynb <br />
 Universal Sentence Encoder and SVM.ipynb <br />
 preprocess_tweets.py
@@ -55,6 +56,7 @@ Universal Sentence Encoder and SVM <br />
 
 ###### Notebook 'BERT_2.ipynb' and 'Copie_de_BERT.ipynb' ######
 Bidirectional Encoder Representations from Transformers <br /> 
+
 
 ## Dataset ##
 **Files** <br />
