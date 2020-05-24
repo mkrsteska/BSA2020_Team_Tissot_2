@@ -58,6 +58,10 @@ Universal Sentence Encoder and SVM <br />
 Bidirectional Encoder Representations from Transformers <br /> 
 
 
+###### Notebook 'Mixed_Models.ipynb' ######
+CountVectorizer and TF-IDF as transformers <br />
+DecisionTree, AdaBoost and MultinomialNB as classifiers <br /> 
+
 ## Dataset ##
 **Files** <br />
 train.csv - the training set <br />
