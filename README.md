@@ -6,13 +6,22 @@ Professor: Michalis Vlachos  <br />
 Teaching Assistant: Ahmad Ajalloeian
 
 ## Overview ##
+### Link to the video ### 
+[Link](https://www.google.com)
 
 ## Structure of the project ##
-**In order to run the notebooks, please download the GloVe model from this link: https://drive.google.com/file/d/1jnyyMXLPUAY8Fh4cSXSeDzRnJHE-gKUz/view?usp=sharing and place it in the data folder.**
+###### In order to run the notebooks, please download the GloVe model from this link: https://drive.google.com/file/d/1jnyyMXLPUAY8Fh4cSXSeDzRnJHE-gKUz/view?usp=sharing and place it in the data folder. ######
 
-**In order to run the notebooks in Google Colab, please upload the file 'preprocess_tweets.py' in Google Colab. The file is placed in the code folder**
+###### In order to run the notebooks in Google Colab, please upload the file 'preprocess_tweets.py' in Google Colab. The file is placed in the code folder ######
 
-#### code #### 
+#### code ####
+BERT_2.ipynb <br />
+Copie_de_BERT.ipynb <br />
+GloVe Embeddings and LSTM.ipynb <br />
+Project Notebook.ipynb <br />
+Universal Sentence Encoder and Keras Sequential Model.ipynb <br />
+Universal Sentence Encoder and SVM.ipynb <br />
+preprocess_tweets.py
 
 #### data ####
 train.csv - the training set <br />
@@ -32,16 +41,19 @@ submission.csv - example of a submission file <br />
 
 ## Models ##
 
-Embedding Layer from Keras and Dense Layer <br />
-
+###### Notebook 'Universal Sentence Encoder and LSTM.ipynb' ######
 GloVe Embeddings and LSTM <br />
 Glove Embeddings and Bidirectional LSTM <br />
 Glove Embeddings and CNN LSTM <br />
 
+###### Notebook 'Universal Sentence Encoder and Keras Sequential Model.ipynb' ######
 Universal Sentence Encoder and Dense Layers <br />
 Universal Sentence Encoder and CNN LSTM <br />
+
+###### Notebook 'Universal Sentence Encoder and SVM.ipynb' ######
 Universal Sentence Encoder and SVM <br />
 
+###### Notebook 'BERT_2.ipynb' and 'Copie_de_BERT.ipynb' ######
 Bidirectional Encoder Representations from Transformers <br /> 
 
 ## Dataset ##
