@@ -18,8 +18,8 @@ Teaching Assistant: Ahmad Ajalloeian
 BERT_2.ipynb <br />
 Copie_de_BERT.ipynb <br />
 GloVe Embeddings and LSTM.ipynb <br />
-Project Notebook.ipynb <br />
-Submission.ipynb (Notebook used to create a submission file for the models in 'Project Notebook.ipynb') <br /> 
+Mixed_models.ipynb <br />
+Mixedmodels_Submission.ipynb <br /> 
 Universal Sentence Encoder and Keras Sequential Model.ipynb <br />
 Universal Sentence Encoder and SVM.ipynb <br />
 preprocess_tweets.py
